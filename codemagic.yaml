@@ -1,6 +1,6 @@
 workflows:
   android-release:
-    name: Mestre da Tabuada 5.3.5 RELEASE
+    name: Mestre da Tabuada 5.3.7 RELEASE
     max_build_duration: 60
 
     environment:
@@ -12,7 +12,7 @@ workflows:
       - name: Verificar projeto e assinatura
         script: |
           echo "========================================"
-          echo "Mestre da Tabuada 5.3.5 RELEASE"
+          echo "Mestre da Tabuada 5.3.7 RELEASE"
           echo "========================================"
           test -f settings.gradle || { echo "ERRO: settings.gradle não encontrado"; exit 1; }
           test -f app/build.gradle || { echo "ERRO: app/build.gradle não encontrado"; exit 1; }
