@@ -1,6 +1,6 @@
 workflows:
   android-apk:
-    name: Mestre da Tabuada 5.3
+    name: Mestre da Tabuada 5.3.2
     max_build_duration: 60
 
     environment:
