@@ -1,6 +1,6 @@
 workflows:
   android-release:
-    name: Mestre da Tabuada 5.3.8 RELEASE
+    name: Mestre da Tabuada 5.3.9 RELEASE
     max_build_duration: 60
 
     environment:
@@ -12,7 +12,7 @@ workflows:
       - name: Verificar projeto e assinatura
         script: |
           echo "========================================"
-          echo "Mestre da Tabuada 5.3.8 RELEASE"
+          echo "Mestre da Tabuada 5.3.9 RELEASE"
           echo "========================================"
           test -f settings.gradle || { echo "ERRO: settings.gradle não encontrado"; exit 1; }
           test -f app/build.gradle || { echo "ERRO: app/build.gradle não encontrado"; exit 1; }
@@ -23,9 +23,9 @@ workflows:
 
       - name: Compilar APK RELEASE
         script: |
-          gradle --no-daemon :app:assembleRelease --stacktrace
+          gradle --no-daemon :app:assembleRelease :app:bundleRelease --stacktrace
 
-      - name: Verificar assinatura do APK
+      - name: Verificar assinatura dos arquivos RELEASE
         script: |
           APK=$(find app/build/outputs/apk/release -name "*.apk" -type f | head -1)
           test -n "$APK" || { echo "ERRO: APK release não encontrado"; exit 1; }
@@ -33,9 +33,15 @@ workflows:
           APKSIGNER=$(find "$ANDROID_SDK_ROOT/build-tools" -name apksigner | sort -V | tail -1)
           test -n "$APKSIGNER" || { echo "ERRO: apksigner não encontrado"; exit 1; }
           "$APKSIGNER" verify --verbose "$APK"
+          AAB=$(find app/build/outputs/bundle/release -name "*.aab" -type f | head -1)
+          test -n "$AAB" || { echo "ERRO: AAB release não encontrado"; exit 1; }
+          echo "AAB: $AAB"
+          jarsigner -verify "$AAB" >/dev/null || { echo "ERRO: assinatura do AAB não validada"; exit 1; }
+          echo "Assinatura do APK e AAB validada."
 
     artifacts:
       - app/build/outputs/apk/release/*.apk
+      - app/build/outputs/bundle/release/*.aab
 
     publishing:
       email:

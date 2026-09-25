@@ -10,14 +10,14 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "com.danielmarques.mestredatabuada"
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.danielmarques.mestredatabuada"
         minSdk 23
-        targetSdk 35
-        versionCode 59
-        versionName "5.3.6"
+        targetSdk 36
+        versionCode 62
+        versionName "5.3.9"
     }
 
     compileOptions {

@@ -1,15 +1,14 @@
-# Mestre da Tabuada 5.3.1 — Matemática Avançada
+# Mestre da Tabuada 5.3.9
 
-Baseada na versão 5.3 sem modo aventura.
+Versão preparada para publicação no Google Play.
 
-## Novidades
-- Matemática Avançada além da tabuada.
-- Números maiores, incluindo exemplo inicial 33 × 3 = 99.
-- Expressões com duas operações.
-- Potências simples.
-- Raízes quadradas exatas.
-- Porcentagens com resultados inteiros.
-- Modo misto avançado.
-- Sem resultados negativos ou decimais.
-- Feedback visual do mascote ao acertar e errar.
-- VersionCode 54 / versionName 5.3.1.
+- Android target/compile SDK: 36
+- VersionCode: 62
+- VersionName: 5.3.9
+- Release assinado pelo Codemagic
+- Gera APK para testes e AAB para Google Play
+- Modo Treino com listas 1 a 10 para as quatro operações
+- Mistura das 4 operações
+- Imagem principal sem corte
+
+O arquivo `.jks`/credenciais de assinatura não deve ser enviado ao GitHub. A assinatura é carregada pelo Codemagic.
