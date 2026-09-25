@@ -16,8 +16,8 @@ android {
         applicationId "com.danielmarques.mestredatabuada"
         minSdk 23
         targetSdk 36
-        versionCode 62
-        versionName "5.3.9"
+        versionCode 63
+        versionName "5.3.10"
     }
 
     compileOptions {

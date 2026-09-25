@@ -1,10 +1,10 @@
-# Mestre da Tabuada 5.3.9
+# Mestre da Tabuada 5.3.10
 
 Versão preparada para publicação no Google Play.
 
 - Android target/compile SDK: 36
 - VersionCode: 62
-- VersionName: 5.3.9
+- VersionName: 5.3.10
 - Release assinado pelo Codemagic
 - Gera APK para testes e AAB para Google Play
 - Modo Treino com listas 1 a 10 para as quatro operações
