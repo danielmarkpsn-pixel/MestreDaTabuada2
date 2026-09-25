@@ -27,3 +27,9 @@ Projeto Android nativo em Java, preparado para gerar APK sem Android Studio usan
 O APK de debug é apropriado para testes e instalação direta. Para publicar na Google Play, depois será necessário gerar uma versão **Release assinada** com uma chave própria.
 
 Desenvolvido por Daniel Marques via IA.
+
+## Mestre da Tabuada 5.3 — Identidade visual
+- Novo mascote baseado na foto fornecida pelo desenvolvedor.
+- Novo ícone do aplicativo com o mascote.
+- Mascote integrado à tela de login, início, avatar, conquistas e resultado.
+- Assets em `app/src/main/res/drawable/` e ícones nas pastas `mipmap-*`.
