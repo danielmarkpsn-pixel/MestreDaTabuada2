@@ -1,30 +1,41 @@
 workflows:
-  android-apk:
-    name: Mestre da Tabuada 5.3.2
+  android-release:
+    name: Mestre da Tabuada 5.3.4 RELEASE
     max_build_duration: 60
 
     environment:
       java: 17
+      android_signing:
+        - mestre_tabuada_release
 
     scripts:
-      - name: Verificar projeto Android
+      - name: Verificar projeto e assinatura
         script: |
-          echo "Diretório atual: $(pwd)"
-          test -f settings.gradle || { echo "ERRO: settings.gradle não está na raiz."; exit 1; }
-          test -f app/build.gradle || { echo "ERRO: app/build.gradle não está na raiz."; exit 1; }
-          echo "--- settings.gradle ---"
-          cat settings.gradle
-          echo "--- app/build.gradle ---"
-          cat app/build.gradle
-          echo "--- tarefas Gradle ---"
-          gradle tasks --all --no-daemon
+          echo "========================================"
+          echo "Mestre da Tabuada 5.3.4 RELEASE"
+          echo "========================================"
+          test -f settings.gradle || { echo "ERRO: settings.gradle não encontrado"; exit 1; }
+          test -f app/build.gradle || { echo "ERRO: app/build.gradle não encontrado"; exit 1; }
+          test -n "$CM_KEYSTORE_PATH" || { echo "ERRO: keystore do Codemagic não foi carregado."; exit 1; }
+          test -f "$CM_KEYSTORE_PATH" || { echo "ERRO: arquivo de keystore não encontrado."; exit 1; }
+          test -n "$CM_KEY_ALIAS" || { echo "ERRO: alias da chave não foi carregado."; exit 1; }
+          echo "Assinatura de release configurada pelo Codemagic."
 
-      - name: Compilar APK
+      - name: Compilar APK RELEASE
         script: |
-          gradle --no-daemon :app:assembleDebug --stacktrace
+          gradle --no-daemon :app:assembleRelease --stacktrace
+
+      - name: Verificar assinatura do APK
+        script: |
+          APK=$(find app/build/outputs/apk/release -name "*.apk" -type f | head -1)
+          test -n "$APK" || { echo "ERRO: APK release não encontrado"; exit 1; }
+          echo "APK: $APK"
+          APKSIGNER=$(find "$ANDROID_SDK_ROOT/build-tools" -name apksigner | sort -V | tail -1)
+          test -n "$APKSIGNER" || { echo "ERRO: apksigner não encontrado"; exit 1; }
+          "$APKSIGNER" verify --verbose "$APK"
 
     artifacts:
-      - app/build/outputs/apk/debug/*.apk
+      - app/build/outputs/apk/release/*.apk
 
     publishing:
       email:
