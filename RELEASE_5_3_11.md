@@ -1,4 +1,4 @@
-# Mestre da Tabuada 5.3.11
+# Mestre da Tabuada 5.3.12
 
 ## Regra dos dois modos
 - **As 4 operações / Matemática:** exercícios com números variados e aleatórios, sem ficar preso às listas/tabuadas.
@@ -10,7 +10,7 @@
   - Mistura: combina as quatro operações.
 
 ## Google Play
-- versionName: 5.3.11
+- versionName: 5.3.12
 - versionCode: 64
 - compileSdk: 36
 - targetSdk: 36
