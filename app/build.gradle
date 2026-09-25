@@ -1,21 +1,4 @@
-plugins {
-    id 'com.android.application'
-}
-
-android {
-    namespace "com.danielmarques.mestredatabuada"
-    compileSdk 35
-
-    defaultConfig {
-        applicationId "com.danielmarques.mestredatabuada"
-        minSdk 23
-        targetSdk 35
-        versionCode 52
-        versionName "5.2"
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
+plugins { id 'com.android.application' }
+android { namespace 'com.danielmarques.mestredatabuada'; compileSdk 35
+ defaultConfig { applicationId "com.danielmarques.mestredatabuada"; minSdk 23; targetSdk 35; versionCode 51; versionName "5.1" }
 }

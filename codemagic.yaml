@@ -9,19 +9,21 @@ workflows:
     scripts:
       - name: Verificar projeto Android
         script: |
-          echo "Diretório atual: $(pwd)"
-          test -f settings.gradle || { echo "ERRO: settings.gradle não está na raiz."; exit 1; }
-          test -f app/build.gradle || { echo "ERRO: app/build.gradle não está na raiz."; exit 1; }
-          echo "--- settings.gradle ---"
-          cat settings.gradle
-          echo "--- app/build.gradle ---"
-          cat app/build.gradle
-          echo "--- tarefas Gradle ---"
-          gradle tasks --all --no-daemon
+          echo "========================================"
+          echo "Mestre da Tabuada 5.1"
+          echo "Diretório: $(pwd)"
+          echo "========================================"
+
+          test -f settings.gradle || { echo "ERRO: settings.gradle não encontrado"; exit 1; }
+          test -f app/build.gradle || { echo "ERRO: app/build.gradle não encontrado"; exit 1; }
+
+          echo "--- Estrutura do projeto ---"
+          find . -maxdepth 3 -type f | sort
 
       - name: Compilar APK
         script: |
-          gradle --no-daemon :app:assembleDebug --stacktrace
+          chmod +x gradlew
+          ./gradlew --no-daemon :app:assembleDebug --stacktrace
 
     artifacts:
       - app/build/outputs/apk/debug/*.apk
