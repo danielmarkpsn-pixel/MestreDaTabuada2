@@ -1,4 +1,4 @@
-# Mestre da Tabuada 5.3.4 — RELEASE
+# Mestre da Tabuada 5.3.5 — RELEASE
 
 ## Ajustes desta revisão
 - removida a tela/reação de mascote comemorando após acerto
@@ -8,7 +8,7 @@
 - botões com duas linhas receberam altura maior para evitar texto cortado
 - textos dos botões foram ajustados para caber melhor em telas menores
 - imagem de apresentação do mascote recebeu enquadramento maior e sem corte do conteúdo
-- versão `5.3.4` / versionCode `57`
+- versão `5.3.5` / versionCode `58`
 
 ## Release / assinatura
 - build `assembleRelease`
@@ -27,7 +27,7 @@
 `mestre_tabuada_release`
 
 5. Faça commit/push desta versão para o GitHub.
-6. Execute o workflow **Mestre da Tabuada 5.3.4 RELEASE**.
+6. Execute o workflow **Mestre da Tabuada 5.3.5 RELEASE**.
 7. O APK final estará em `app/build/outputs/apk/release/`.
 
 ## Importante
